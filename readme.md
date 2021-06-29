@@ -16,7 +16,7 @@ onde um Streamer consiga responder diversas perguntas.
 <p>
 Seus úsuarios se logam e podem fazer perguntas e darem likes nas que eles desejam que fossem respondidas. O streamer por sua vez pode escolher uma para respodender, Marcar como respondida ou deletar caso queira.
 </p>
-![Logo](https://t2.tudocdn.net/572277?w=646&h=284)
+[![Logo](https://t2.tudocdn.net/572277?w=646&h=284)]
 
 ## Tecnologia
 
