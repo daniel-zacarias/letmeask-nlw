@@ -9,9 +9,13 @@ import Button from '../components/Button'
 import '../styles/auth.scss'
 
 import { useAuth } from '../hooks/useAuth'
+import { useTheme } from '../hooks/useTheme'
 import { FormEvent, useState } from 'react'
 import { database } from '../services/firebase'
 import toast,{ Toaster} from 'react-hot-toast'
+import { ToggleTheme } from '../components/ToggleTheme'
+
+
 
 
 export function Home(){
@@ -19,6 +23,7 @@ export function Home(){
     const history = useHistory();
     const {user, signWithGoogle} = useAuth();
     const [roomCode, setRoomCode]= useState('');
+    const currentTheme = useTheme();
 
 
     async function handleCreateRoom(){
@@ -55,9 +60,11 @@ export function Home(){
     }
 
     return (
-        <div id="page-auth">
+        <div id="page-auth" className={currentTheme.theme}>
+            < ToggleTheme />
             <div><Toaster /></div>
             <aside>
+                
                 <img src={illustrationImg} alt="ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo</strong>
                 <p>Tira as dúvidas da sua audiência em tempo-real</p>

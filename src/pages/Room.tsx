@@ -8,15 +8,13 @@ import logoImg from '../assets/images/logo.svg';
 import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
+import { ToggleTheme } from '../components/ToggleTheme';
 import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
+import { useTheme } from '../hooks/useTheme';
 import { database } from '../services/firebase';
 
 import '../styles/room.scss'
-
-
-
-
 
 type RoomParams = {
     id: string;
@@ -28,7 +26,19 @@ export function Room() {
     const [newQuestion, setNewQuestion] = useState('');
     const roomId = params.id;
     const { questions, title } = useRoom(roomId);
+    const currentTheme = useTheme();
+    
 
+    // useEffect(() => {
+    //     async function isClosedRoom(){
+            
+    //         return roomRef;
+            
+    //     }
+        
+    //     const room = isClosedRoom().val().endedAt
+
+    // }, [])
 
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
@@ -65,7 +75,8 @@ export function Room() {
     }
 
     return (
-        <div id='page-room'>
+        <div id='page-room' className={currentTheme.theme}>
+            < ToggleTheme />
             <header>
                 <div className="content">
                     <img src={logoImg} alt="letmeask" />
