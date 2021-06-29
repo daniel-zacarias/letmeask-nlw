@@ -14,9 +14,10 @@ export function RoomCode(props:RoomCodeProps){
     function copyRoomCodeToClipBoard(){
         toast.success("Copiado com sucesso",{
         iconTheme:{
-            primary: '#835afd',
+            primary: 'var(--primary-color)',
             secondary: '#FFFAEE',
-        }})
+        },
+    })
         navigator.clipboard.writeText(props.code);
         
     }

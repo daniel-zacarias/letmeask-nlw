@@ -13,6 +13,8 @@ import { useRoom } from '../hooks/useRoom';
 
 import '../styles/room.scss'
 import { database } from '../services/firebase';
+import { useTheme } from '../hooks/useTheme';
+import { ToggleTheme } from '../components/ToggleTheme';
 
 
 
@@ -26,7 +28,8 @@ export function AdminRoom(){
     const params = useParams<RoomParams>();
     const roomId = params.id;
     const {questions, title } = useRoom(roomId);
-    const history  = useHistory()
+    const history  = useHistory();
+    const currentTheme = useTheme();
 
     
     async function handleEndRoom(){
@@ -58,7 +61,8 @@ export function AdminRoom(){
    
 
     return(
-        <div id='page-room'>
+        <div id='page-room' className={currentTheme.theme}>
+            < ToggleTheme />
             <header>
                 <div className="content">
                     <img src={logoImg} alt="letmeask"/>

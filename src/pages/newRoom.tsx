@@ -8,11 +8,14 @@ import '../styles/auth.scss'
 import Button from '../components/Button'
 import { useAuth } from '../hooks/useAuth'
 import { database } from '../services/firebase'
+import { useTheme } from '../hooks/useTheme'
+import { ToggleTheme } from '../components/ToggleTheme'
 
 export function NewRoom(){
     const {user} = useAuth();
     const history = useHistory();
     const [newRoom, setNewRoom] = useState('');
+    const currentTheme = useTheme();
 
     async function handleCreateRoom(event:FormEvent){
         event.preventDefault();
@@ -28,11 +31,12 @@ export function NewRoom(){
             authorId: user?.id,
         });
 
-        history.push(`/rooms/${firebaseRoom.key}`);
+        history.push(`/admin/rooms/${firebaseRoom.key}`);
     }
 
     return (
-        <div id="page-auth">
+        <div id="page-auth" className={currentTheme.theme}>
+            < ToggleTheme />
             <aside>
                 <img src={illustrationImg} alt="ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo</strong>
